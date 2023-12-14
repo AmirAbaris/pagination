@@ -9,9 +9,9 @@ import { Passenger } from '../models/passenger.model';
 export class PassengerService {
   private readonly http = inject(HttpClient);
 
-  getAll(pageNumber: number): Observable<Passenger | null> {
-    return this.http.get<Passenger>(`https://localhost:5001/api/passenger/get-all/${pageNumber}`).pipe(
-      map((passengers: Passenger | null) => {
+  getAll(pageNumber: number): Observable<Passenger[] | null> {
+    return this.http.get<Passenger[]>(`https://localhost:5001/api/passenger/get-all/${pageNumber}`).pipe(
+      map((passengers: Passenger[] | null) => {
         if (passengers) {
           return passengers;
         }
