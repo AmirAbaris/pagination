@@ -28,9 +28,11 @@ public class PassengerRepository : IPassengerRepository
         return null;
     }
 
-    public async Task<List<Passenger>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<List<Passenger>> GetAllAsync(int pageNumber, CancellationToken cancellationToken)
     {
-        List<Passenger> passengers = await _collection.Find(new BsonDocument()).ToListAsync(cancellationToken);
+        int skipCount = (pageNumber - 1) * 10;
+
+        List<Passenger> passengers = await _collection.Find(new BsonDocument()).Skip(skipCount).Limit(10).ToListAsync(cancellationToken);
 
         return passengers;
     }

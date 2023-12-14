@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BehaviorSubject, switchMap } from 'rxjs';
+import { PassengerService } from '../../services/passenger.service';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,13 @@ import { BehaviorSubject, switchMap } from 'rxjs';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  private readonly passengerService = inject(PassengerService);
+
   currentPage$ = new BehaviorSubject<number>(1);
 
-  // currentPageData$ = this.currentPage$.pipe(
-  //   switchMap((currentPgae) => )
-  // );
+  currentPageData$ = this.currentPage$.pipe(
+    switchMap((currentPage) => {
+      this.passengerService.getAll().
+    })
+  );
 }

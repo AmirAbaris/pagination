@@ -16,9 +16,9 @@ public class PassengerController(IPassengerRepository passengerRepository) : Bas
     }
 
     [HttpGet("get-all")]
-    public async Task<ActionResult<IEnumerable<Passenger>>> GetAll(CancellationToken cancellationToken)
+    public async Task<ActionResult<IEnumerable<Passenger>>> GetAll(int pageNumber, CancellationToken cancellationToken)
     {
-        List<Passenger> passengers = await passengerRepository.GetAllAsync(cancellationToken);
+        List<Passenger> passengers = await passengerRepository.GetAllAsync(pageNumber, cancellationToken);
 
         return passengers;
     }
