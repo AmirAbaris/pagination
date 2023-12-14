@@ -1,6 +1,6 @@
 namespace api.Repositories;
 
-public class PassengerRepository
+public class PassengerRepository : IPassengerRepository
 {
     private const string _collectionName = "passengers";
     private readonly IMongoCollection<Passenger> _collection;
