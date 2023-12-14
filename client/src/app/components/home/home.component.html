@@ -1,1 +1,17 @@
-<p>home works!</p>
+<header>
+    <mat-toolbar>
+        <button mat-flat-button (click)="prevPage()">prev page</button>
+        @if (currentPage$ | async; as currentPage) {
+        <p>current page : {{currentPage}}</p>
+        }
+        <button mat-flat-button (click)="nextPage()">next page</button>
+    </mat-toolbar>
+</header>
+
+<main>
+    @if (currentPageData$ | async; as pasengers) {
+    <mat-list role="list" *ngFor="let pasenger of pasengers">
+        <mat-list-item role="listitem">{{pasenger}}</mat-list-item>
+    </mat-list>
+    }
+</main>
