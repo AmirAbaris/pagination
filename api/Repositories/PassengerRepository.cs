@@ -1,3 +1,5 @@
+using api.DTOs;
+
 namespace api.Repositories;
 
 public class PassengerRepository : IPassengerRepository
@@ -12,15 +14,11 @@ public class PassengerRepository : IPassengerRepository
         _collection = dbName.GetCollection<Passenger>(_collectionName);
     }
 
-    public async Task<Passenger?> RegisterAsync(Passenger passengerIn, CancellationToken cancellationToken)
+    public async Task<Passenger?> RegisterAsync(PassengerInputDto passengerIn, CancellationToken cancellationToken)
     {
         if (passengerIn is not null)
         {
-            Passenger passenger = new(
-                Id: null,
-                Name: passengerIn.Name.ToLower().Trim(),
-                IdNumber: passengerIn.IdNumber
-            );
+            Passenger passenger = _Mappers.ConvertPassengerInputDtoToPassenger(passengerIn);
 
             await _collection.InsertOneAsync(passenger, null, cancellationToken);
         }
