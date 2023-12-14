@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { BehaviorSubject, switchMap } from 'rxjs';
+import { BehaviorSubject, map, switchMap } from 'rxjs';
 import { PassengerService } from '../../services/passenger.service';
 
 @Component({
@@ -16,7 +16,15 @@ export class HomeComponent {
 
   currentPageData$ = this.currentPage$.pipe(
     switchMap((currentPage) => {
-      this.passengerService.getAll().
+      return this.passengerService.getAll(currentPage).pipe(
+        map((passenger) => {
+          if (passenger) {
+            return passenger.name;
+          }
+
+          return null;
+        })
+      );
     })
   );
 }
