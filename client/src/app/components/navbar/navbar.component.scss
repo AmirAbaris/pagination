@@ -1,0 +1,13 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+
+    .right,
+    .left {
+        padding: 1rem;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
