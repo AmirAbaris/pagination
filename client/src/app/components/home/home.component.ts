@@ -3,8 +3,8 @@ import { BehaviorSubject, map, switchMap } from 'rxjs';
 import { PassengerService } from '../../services/passenger.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,7 @@ export class HomeComponent {
       return this.passengerService.getAll(currentPage).pipe(
         map((passenger) => {
           if (passenger) {
-            return passenger.name;
+            return passenger;
           }
 
           return null;

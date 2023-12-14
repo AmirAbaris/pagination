@@ -10,8 +10,10 @@
 
 <main>
     @if (currentPageData$ | async; as pasengers) {
-    <mat-list role="list" *ngFor="let pasenger of pasengers">
-        <mat-list-item role="listitem">{{pasenger}}</mat-list-item>
+    @for (pasenger of pasengers; track $index) {
+    <mat-list role="list">
+        <mat-list-item role="listitem">{{pasenger.name}}</mat-list-item>
     </mat-list>
+    }
     }
 </main>
