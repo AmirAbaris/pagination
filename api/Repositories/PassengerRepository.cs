@@ -21,6 +21,8 @@ public class PassengerRepository : IPassengerRepository
             Passenger passenger = _Mappers.ConvertPassengerInputDtoToPassenger(passengerIn);
 
             await _collection.InsertOneAsync(passenger, null, cancellationToken);
+
+            return passenger;
         }
 
         return null;
