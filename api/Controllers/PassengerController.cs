@@ -2,11 +2,10 @@ using api.DTOs;
 
 namespace api.Controllers;
 
-
 public class PassengerController(IPassengerRepository passengerRepository) : BaseApiController
 {
     [HttpPost("register")]
-    public async Task<ActionResult<Passenger>> Create(PassengerInputDto passengerIn, CancellationToken cancellationToken)
+    public async Task<ActionResult<Passenger>> Register(PassengerInputDto passengerIn, CancellationToken cancellationToken)
     {
         Passenger? passenger = await passengerRepository.RegisterAsync(passengerIn, cancellationToken);
 
