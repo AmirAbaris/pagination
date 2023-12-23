@@ -28,11 +28,8 @@ export class HomeComponent {
     switchMap((currentPage) => {
       return this.passengerService.getAll(currentPage).pipe(
         map((passenger) => {
-          if (passenger) {
-            return passenger;
-          }
+          return passenger || null;
 
-          return null;
         })
       );
     })
