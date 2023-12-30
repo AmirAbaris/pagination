@@ -15,11 +15,7 @@ export class PassengerService {
   getAll(pageNumber: number): Observable<Passenger[] | null> {
     return this.#http.get<Passenger[]>(`${this.#apiUrl}get-all/${pageNumber}`).pipe(
       map((passengers: Passenger[] | null) => {
-        if (passengers) {
-          return passengers;
-        }
-
-        return null;
+        return passengers || null;
       })
     );
   }
