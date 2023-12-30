@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment.development';
 export class PassengerService {
   readonly #http = inject(HttpClient);
 
-  #apiUrl: string = environment.baseApiUrl + 'passenger/';
+  readonly #apiUrl: string = environment.baseApiUrl + 'passenger/';
 
   getAll(pageNumber: number): Observable<Passenger[] | null> {
     return this.#http.get<Passenger[]>(`${this.#apiUrl}get-all/${pageNumber}`).pipe(
